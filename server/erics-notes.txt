@@ -5,7 +5,7 @@ user
  - password
  - threads
  - replies
- - permissions
+ - accessLevel
 
 genre
  - genreTitle

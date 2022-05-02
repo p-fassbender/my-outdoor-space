@@ -6,25 +6,19 @@ const Thread = require('./Thread');
 const Reply = require('./Reply');
 
 const userSchema = new Schema({
-  firstName: {
+  username: {
     type: String,
     required: true,
     trim: true
-  },
-  lastName: {
-    type: String,
-    required: true,
-    trim: true
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true
   },
   password: {
     type: String,
     required: true,
     minlength: 5
+  },
+  accessLevel: {
+      type: String,
+      required: true,
   },
   threads: [Thread.schema],
   replies: [Reply.schema]
