@@ -1,0 +1,46 @@
+** MODELS **
+
+user
+ - username
+ - password
+ - threads
+ - replies
+ - accessLevel
+
+genre
+ - genreTitle
+ - topics
+
+topic
+ - topicTitle
+ - description
+ - threads
+ - threadCount
+
+thread
+ - threadTitle
+ - threadContent
+ - threadImage
+ - replies
+ - replyCount
+
+reply
+ - replyTitle
+ - replyContent
+ - user
+ - replyNumber
+
+
+
+** MUTATIONS ** 
+addUser(username: String!, password: String!): Auth
+updateUser(username: String!, password: String!): User
+addThread(threadTitle: String!, threadContent: String!): Thread
+updateThread(threadTitle: String!, threadContent: String!): Thread
+deleteThread(_id: ID!): Thread
+addReply(replyTitle: String!, replyContent: String!, user: String!): Reply
+updateReply(replyTitle: String!, replyContent: String!): Reply
+deleteReply(_id: ID!): Reply
+login(username: String!, password: String!): Auth
+
+
