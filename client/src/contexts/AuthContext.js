@@ -1,18 +1,18 @@
-import React, { createContext, useContext } from 'react'
+import React, { createContext } from 'react'
 
 export const AuthContext = createContext();
 
 const AuthContextProvider = (props) => {
-    const [state, setState] = useState({
+    const [loginState, setLoginState] = useState({
         isLoggedIn: false
     })
 
-    toggleAuth = () => {
-        setState({ isLoggedIn: !state.isLoggedIn })
+    const toggleAuth = () => {
+        setLoginState({ isLoggedIn: !loginState.isLoggedIn })
     }
 
     return (
-        <AuthContext.Provider value={{ ...state, toggleAuth }}>
+        <AuthContext.Provider value={{ ...loginState, toggleAuth }}>
             {props.children}
         </AuthContext.Provider>
     )
