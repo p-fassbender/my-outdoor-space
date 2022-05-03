@@ -8,7 +8,6 @@ const topicSchema = new Schema({
   topicTitle: {
     type: String,
     required: true,
-    trim: true
   },
   topicDescription: {
       type: String,

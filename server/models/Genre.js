@@ -8,7 +8,6 @@ const genreSchema = new Schema({
   genreTitle: {
     type: String,
     required: true,
-    trim: true
   },
   topics: [Topic.schema]
 });
