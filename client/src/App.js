@@ -8,12 +8,14 @@ import Footer from './components/Footer';
 function App() {
     return (
         <Router>
-            <Header />
-            <Routes>
-                <Route exact path="/" element={<Home />} />
-                {/* <Route path="/topic/:topicId" element={<TopicPage />} /> */}
-            </Routes>
-            <Footer />
+            <div className="container d-flex flex-column">
+                <Header />
+                    <Routes>
+                        <Route exact path="/" element={<Home />} />
+                        {/* <Route path="/topic/:topicId" element={<TopicPage />} /> */}
+                    </Routes>
+                <Footer />
+            </div>
         </Router>
     );
 }
