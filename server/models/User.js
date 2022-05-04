@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 const Thread = require('./Thread');
-const Reply = require('./Reply');
+//const Reply = require('./Reply');
 
 const userSchema = new Schema({
   username: {
@@ -21,7 +21,7 @@ const userSchema = new Schema({
       required: true,
   },
   threads: [Thread.schema],
-  replies: [Reply.schema]
+//  replies: [Reply.schema]
 });
 
 // set up pre-save middleware to create password
