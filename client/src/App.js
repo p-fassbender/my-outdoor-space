@@ -4,7 +4,8 @@ import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './pages/Login';
-import Signup from './pages/Signup'
+import Signup from './pages/Signup';
+import SingleThread from './pages/SingleThread';
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                         {/* <Route path="/topic/:topicId" element={<TopicPage />} /> */}
                         <Route exact path="/login" element={< Login/>} />
                         <Route exact path="/signup" element={<Signup />} />
+                        <Route exact path="/thread/" element={<SingleThread />} />
                     </Routes>
                 <Footer />
             </div>

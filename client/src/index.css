@@ -1,5 +1,7 @@
 :root {
   --colorOne: #6cb476;
+  --colorTwo: #d0fcd6;
+  --colorThree: #004d0a;
 }
 
 body {
@@ -28,4 +30,23 @@ nav {
   background-color: var(--colorOne);
 }
 
+.threadBG {
+  height: 100vh;
+  background-color: var(--colorTwo);
+}
 
+.card {
+  border: 2px solid var(--colorThree);
+}
+
+.cardColOne {
+  border-right: 2px solid var(--colorThree);
+}
+
+.cardColTwo {
+  border: 2px solid var(--colorThree);
+}
+
+.topBorder {
+  border-top: 2px solid var(--colorThree)
+}
