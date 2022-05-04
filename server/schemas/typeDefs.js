@@ -42,10 +42,11 @@ const typeDefs = gql`
   }
 
   type Query {
-    genre: [Genre]
+    genres: [Genre]
     topics(genre: ID, topicTitle: String): [Topic]
     topic(_id: ID!): Topic
     user: User
+    threads: [Thread]
     thread(_id: ID!): Thread
     replies(_id: [ID]!): Reply
   }
