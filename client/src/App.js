@@ -9,14 +9,16 @@ import Signup from './pages/Signup'
 function App() {
     return (
         <Router>
-            <Header />
-            <Routes>
-                <Route exact path="/" element={<Home />} />
-                {/* <Route path="/topic/:topicId" element={<TopicPage />} /> */}
-                <Route exact path="/login" element={< Login/>} />
-                <Route exact path="/signup" element={<Signup />} />
-            </Routes>
-            <Footer />
+            <div className='container d-flex flex-column'>
+                <Header />
+                    <Routes>
+                        <Route exact path="/" element={<Home />} />
+                        {/* <Route path="/topic/:topicId" element={<TopicPage />} /> */}
+                        <Route exact path="/login" element={< Login/>} />
+                        <Route exact path="/signup" element={<Signup />} />
+                    </Routes>
+                <Footer />
+            </div>
         </Router>
     );
 }
