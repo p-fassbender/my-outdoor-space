@@ -21,15 +21,15 @@ const Header = () => {
                 <li className='nav-item'>
                   {Auth.loggedIn() ? (
                     <>
-                      <Link to="/profile" className='mx-5'>My Profile</Link>
+                      <Link to="/profile" className='mx-2'>My Profile</Link>
                       <a href="/" onClick={logout}>
                         Logout
                       </a>
                     </>
                   ) : (
                     <>
-                      <Link to="/login" className='mx-5'>Login</Link>
-                      <Link to="/signup" className='mx-5'>Signup</Link>
+                      <Link to="/login" className='mx-3'>Login</Link>
+                      <Link to="/signup" className='mx-3'>Signup</Link>
                     </>
                   )}
                 </li>
