@@ -13,7 +13,10 @@ const replySchema = new Schema({
       type: String,
       required: true,
   },
-  user: [User.schema],
+  user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+  }
 });
 
 // set up pre-save middleware to create password
