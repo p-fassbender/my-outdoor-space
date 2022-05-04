@@ -5,19 +5,49 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './pages/Login';
 import Signup from './pages/Signup'
+import {
+    ApolloClient,
+    InMemoryCache,
+    ApolloProvider,
+    createHttpLink
+} from '@apollo/client';
+
+import { setContext } from '@apollo/client/link/context';
+
+const httpLink = createHttpLink({
+    uri: '/graphql',
+  });
+  
+const authLink = setContext((_, { headers }) => {
+    const token = localStorage.getItem('id_token');
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : '',
+      },
+    };
+  });
+
+const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
+});
+
 
 function App() {
     return (
-        <Router>
-            <Header />
-            <Routes>
-                <Route exact path="/" element={<Home />} />
-                {/* <Route path="/topic/:topicId" element={<TopicPage />} /> */}
-                <Route exact path="/login" element={< Login/>} />
-                <Route exact path="/signup" element={<Signup />} />
-            </Routes>
-            <Footer />
-        </Router>
+        <ApolloProvider client={client}>
+            <Router>
+                <Header />
+                <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    {/* <Route path="/topic/:topicId" element={<TopicPage />} /> */}
+                    <Route exact path="/login" element={< Login />} />
+                    <Route exact path="/signup" element={<Signup />} />
+                </Routes>
+                <Footer />
+            </Router>
+        </ApolloProvider>
     );
 }
 
