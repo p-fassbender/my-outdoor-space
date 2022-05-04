@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
-const Reply = require('./Reply');
+
 
 
 const threadSchema = new Schema({
