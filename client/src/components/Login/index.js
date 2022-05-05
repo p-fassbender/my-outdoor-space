@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { LOGIN } from '../../utils/mutations';
-
 import Auth from '../../utils/auth.js'
 
 const LoginForm = () => {
@@ -16,7 +15,7 @@ const LoginForm = () => {
         event.preventDefault();
         try {
             const mutationResponse = await login({
-                variables: { email: formState.username, password: formState.password },
+                variables: { username: formState.username, password: formState.password }
             });
             const token = mutationResponse.data.login.token;
             Auth.login(token);
@@ -31,13 +30,15 @@ const LoginForm = () => {
             ...formState,
             [name]: value,
         });
+        console.log(formState)
     };
 
     return (
         <div className='container' style={{maxWidth: "500px"}}>
+            <h2>Login</h2>
             <form onSubmit={handleFormSubmit}>
                 <div className='form-group'>
-                    <label for='usernameInput'>Username</label>
+                    <label htmlFor='usernameInput'>Username</label>
                     <input
                         type={'text'}
                         className='form-control'
@@ -48,7 +49,7 @@ const LoginForm = () => {
                     />
                 </div>
                 <div className='form-group'>
-                    <label for='passwordInput'>Password</label>
+                    <label htmlFor='passwordInput'>Password</label>
                     <input
                         type={'password'}
                         className='form-control'
@@ -64,7 +65,7 @@ const LoginForm = () => {
                     </div>
                 ) : null}
                 <button type={'submit'} className='btn btn-primary'>Submit</button>
-                <Link to="/signup"> ← Don't have an account? Sign up now!</Link>
+                <Link to="/signup"> Don't have an account? Sign up now!</Link>
             </form>
         </div>
     )
