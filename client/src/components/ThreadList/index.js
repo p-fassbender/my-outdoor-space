@@ -12,7 +12,7 @@ const ThreadList = ({ threads }) => {
                     <p className='card-header'>
 
                         {threads.threadTitle}
-                    {threads}
+
                     </p>
                 </div>
             ))}
