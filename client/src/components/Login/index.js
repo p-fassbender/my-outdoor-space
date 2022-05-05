@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { LOGIN } from '../../utils/mutations';
@@ -15,7 +14,6 @@ const LoginForm = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log("form submitted")
         try {
             const mutationResponse = await login({
                 variables: { email: formState.username, password: formState.password },
@@ -36,7 +34,7 @@ const LoginForm = () => {
     };
 
     return (
-        <div className='container'>
+        <div className='container' style={{maxWidth: "500px"}}>
             <form onSubmit={handleFormSubmit}>
                 <div className='form-group'>
                     <label for='usernameInput'>Username</label>
@@ -45,7 +43,7 @@ const LoginForm = () => {
                         className='form-control'
                         id='usernameInput'
                         name='username'
-                        placeholder='Enter Username'
+                        placeholder='Username'
                         onChange={handleChange}
                     />
                 </div>
@@ -66,7 +64,7 @@ const LoginForm = () => {
                     </div>
                 ) : null}
                 <button type={'submit'} className='btn btn-primary'>Submit</button>
-                <Link to="/signup">← Don't have an account? Sign up now!</Link>
+                <Link to="/signup"> ← Don't have an account? Sign up now!</Link>
             </form>
         </div>
     )
