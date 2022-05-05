@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_THREAD } from '../../utils/mutations';
+import { QUERY_THREADS } from '../../utils/queries';
+
 
 const ThreadForm = () => {
 
-  const [threadTitle, setThreadTitle] = useState('');
+  const [formState, setFormState] = useState({threadTitle: '', threadContent: ''});
   const [characterCount, setCharacterCount] = useState(0);
-  const [addThread, { error }] = useMutation(ADD_THREAD);
+  const [addThread, { error }] = useMutation(ADD_THREAD, {
+    update(cache, { data: { addThread } }) {
+
+        const { threads } = cache.readQuery({ query: QUERY_THREADS });
+        cache.writeQuery({
+          query: QUERY_THREADS,
+          data: { threads: [addThread, ...threads] },
+        });
+      }
+  });
+    
 
   const handleChange = event => {
-    if (event.target.value.length <= 200) {
-      setThreadTitle(event.target.value);
+    if (event.target.value.length <= 100) {
+      setFormState(event.target.value);
       setCharacterCount(event.target.value.length);
     }
   };
@@ -21,11 +33,11 @@ const ThreadForm = () => {
     try {
       // add thread to database
       await addThread({
-        variables: { threadTitle }
+        variables: { threadTitle: formState.threadTitle, threadContent: formState.threadContent }
       });
 
       // clear form value
-      setThreadTitle('');
+      setFormState('');
       setCharacterCount(0);
     } catch (e) {
       console.error(e);
@@ -35,8 +47,8 @@ const ThreadForm = () => {
   return (
     <div>
       <h1>Threads</h1>
-      <p className={`m-0 ${characterCount === 200 ? 'text-error' : ''}`}>
-        Character Count: 0/200
+      <p className={`m-0 ${characterCount === 100 ? 'text-error' : ''}`}>
+        Character Count: 0/100
         {error && <span className="ml-2">Something went wrong...</span>}
       </p>
       <form
@@ -44,10 +56,18 @@ const ThreadForm = () => {
         onSubmit={handleFormSubmit}>
         <textarea
           placeholder="Add a new thread!"
-          value={threadTitle}
+          value={formState.threadTitle}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
+        
+        <textarea
+          placeholder="Add content to thread."
+          value={formState.threadContent}
+          className="form-input col-12 col-md-9"
+          onChange={handleChange}
+        ></textarea>
+    
         <button className="btn col-12 col-md-3" type="submit">
           Submit
         </button>

@@ -18,7 +18,11 @@ const userSchema = new Schema({
   },
   accessLevel: {
       type: String,
+<<<<<<< HEAD
     //   required: true,
+=======
+    //  required: true,
+>>>>>>> 7f4a7fe4aae8dbcbaefcec09f8f375114535de9c
   },
   threads: [Thread.schema],
 //  replies: [Reply.schema]

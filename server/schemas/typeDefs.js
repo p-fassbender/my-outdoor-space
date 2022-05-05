@@ -17,8 +17,8 @@ const typeDefs = gql`
   type Thread {
     _id: ID
     threadTitle: String
-    ThreadContent: String
-    ThreadImage: String
+    threadContent: String
+    threadImage: String
     replies: [Reply]
   }
   type Reply {
@@ -45,7 +45,7 @@ const typeDefs = gql`
     genres: [Genre]
     topics(genre: ID, topicTitle: String): [Topic]
     topic(_id: ID!): Topic
-    user: User
+    users: User
     threads: [Thread]
     thread(_id: ID!): Thread
     replies(_id: [ID]!): Reply

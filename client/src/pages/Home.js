@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ThreadForm from '../components/ThreadForm';
+import ThreadList from '../components/ThreadList';
 
 const Home = () => {
 
@@ -136,7 +137,19 @@ const Home = () => {
 
 
 
+<<<<<<< HEAD
       
+=======
+      <div className='flex-row justify-space-between'>
+        <div className='col-12 mb-3'>
+          <ThreadForm />
+        </div>
+
+        <div>
+          <ThreadList />
+        </div>
+      </div>
+>>>>>>> 7f4a7fe4aae8dbcbaefcec09f8f375114535de9c
     </main>
 
 
