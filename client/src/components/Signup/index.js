@@ -9,7 +9,7 @@ const SignupForm = () => {
         username: '',
         password: ''
     });
-    const [addUser] = useMutation(ADD_USER);
+    const [addUser, { error }] = useMutation(ADD_USER);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -32,11 +32,11 @@ const SignupForm = () => {
     };
 
     return (
-        <div className='container' style={{maxWidth: "500px"}}>
+        <div className='container' style={{ maxWidth: "500px" }}>
             <h2>Signup</h2>
             <form onSubmit={handleFormSubmit}>
                 <div className='form-group'>
-                    <label for='usernameSignup'>Username</label>
+                    <label htmlFor='usernameSignup'>Username</label>
                     <input
                         type={'text'}
                         className='form-control'
@@ -47,7 +47,7 @@ const SignupForm = () => {
                     />
                 </div>
                 <div className='form-group'>
-                    <label for='passwordSignup'>Password</label>
+                    <label htmlFor='passwordSignup'>Password</label>
                     <input
                         type={'password'}
                         className='form-control'
@@ -57,8 +57,13 @@ const SignupForm = () => {
                         onChange={handleChange}
                     />
                 </div>
+                {error ? (
+                    <div>
+                        <p className="error-text">Both a username and password are required</p>
+                    </div>
+                ) : null}
                 <button type={'submit'} className='btn btn-primary'>Submit</button>
-                <Link to="/login">Already have an account? Login now!</Link>
+                <Link to="/login"> Already have an account? Login now!</Link>
             </form>
         </div>
     )
