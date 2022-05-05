@@ -40,7 +40,7 @@ function App() {
     return (
         <ApolloProvider client={client}>
             <Router>
-                <div className='container d-flex flex-column'>
+                <div className='container d-flex flex-column threadBG'>
                     <Header />
                     <Routes>
                         <Route exact path="/" element={<Home />} />

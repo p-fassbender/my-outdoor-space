@@ -10,7 +10,6 @@ const PostCard = () => {
         <div className="col-2 cardColOne">
           <p className="mx-2">User info</p>
         </div>
-
         <div className="col-10 cardColTw">
           <p className="mx-2">The post content goes here.</p>
         </div>
