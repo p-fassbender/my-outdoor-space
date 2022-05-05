@@ -5,7 +5,7 @@ import { QUERY_THREADS } from '../../utils/queries';
 
 const ThreadForm = () => {
 
-  const [threadTitle, setThreadTitle] = useState('');
+  const [threadTitle, setThreadTitle] = useState({threadName: ''});
   const [characterCount, setCharacterCount] = useState(0);
   const [addThread, { error }] = useMutation(ADD_THREAD, {
     update(cache, { data: { addThread } }) {
@@ -55,7 +55,7 @@ const ThreadForm = () => {
         onSubmit={handleFormSubmit}>
         <textarea
           placeholder="Add a new thread!"
-          value={threadTitle}
+          value={threadTitle.threadName}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
