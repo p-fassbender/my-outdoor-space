@@ -16,13 +16,13 @@ const threadSchema = new Schema({
   threadImage: {
       type: String,
   },
-//  replies: [Reply.schema],
-//  replyCount: [
-//    {
-//      type: Schema.Types.ObjectId,
-//      ref: 'Reply'
-//    }
-//  ]
+  replies: [Reply.schema],
+  replyCount: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Reply'
+      }
+    ]
 });
 
 // set up pre-save middleware to create password

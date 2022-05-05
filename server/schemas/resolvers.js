@@ -47,14 +47,20 @@ const resolvers = {
 
             throw new AuthenticationError('Not logged in');
         },
-        addThread: async (parent, { topics }, context) => {
+        addThread: async (parent, args, context) => {
             console.log(context);
-            if (context.thread) {
-                const topic = new Thread({ Topic });
+            if (context.user) {
 
-                await Thread.findByIdAndUpdate(context.user._id, { $push: { topics: topic } });
 
-                return topic;
+                const thread = await Thread.create(args);
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { threads: thread } },
+                    { new: true }
+                )
+                //  const topic = new Thread({ Topic });
+
+                return thread;
             }
 
             throw new AuthenticationError('Not logged in');
