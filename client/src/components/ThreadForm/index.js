@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_THREAD } from '../../utils/mutations';
+import { QUERY_THREADS } from '../../utils/queries';
 
 const ThreadForm = () => {
 
   const [threadTitle, setThreadTitle] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
-  const [addThread, { error }] = useMutation(ADD_THREAD);
+  const [addThread, { error }] = useMutation(ADD_THREAD, {
+    update(cache, { data: { addThread } }) {
+
+        const { threads } = cache.readQuery({ query: QUERY_THREADS });
+        cache.writeQuery({
+          query: QUERY_THREADS,
+          data: { threads: [addThread, ...threads] },
+        });
+      }
+  });
+    
 
   const handleChange = event => {
     if (event.target.value.length <= 200) {
