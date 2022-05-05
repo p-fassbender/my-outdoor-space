@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { LOGIN } from '../../utils/mutations';
-
 import Auth from '../../utils/auth.js'
 
 const LoginForm = () => {
@@ -64,7 +63,7 @@ const LoginForm = () => {
                     </div>
                 ) : null}
                 <button type={'submit'} className='btn btn-primary'>Submit</button>
-                <Link to="/signup"> ← Don't have an account? Sign up now!</Link>
+                <Link to="/signup">Don't have an account? Sign up now!</Link>
             </form>
         </div>
     )

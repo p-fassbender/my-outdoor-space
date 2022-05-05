@@ -6,6 +6,11 @@ const Home = () => {
 
   return (
     <main>
+        <div className='flex-row justify-space-between'>
+        <div className='col-12 mb-3'>
+          <ThreadForm />
+        </div>
+      </div>
       <div className="card m-4">
         <h2 className="card-header text-center">Camping</h2>
 
@@ -131,11 +136,7 @@ const Home = () => {
 
 
 
-      <div className='flex-row justify-space-between'>
-        <div className='col-12 mb-3'>
-          <ThreadForm />
-        </div>
-      </div>
+      
     </main>
 
 
