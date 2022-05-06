@@ -11,7 +11,7 @@ const Home = () => {
                 <div className='col-12 mb-3'>
                     <ThreadForm />
                 </div>
-                
+
                 <div>
                     <ThreadList />
                 </div>
@@ -134,11 +134,8 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-        </main>
-
-
+        </main >
     );
 };
 
 export default Home;
-

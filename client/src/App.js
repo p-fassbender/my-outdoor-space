@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Signup from './pages/Signup'
 import SingleThread from './pages/SingleThread';
+import TopicPage from './pages/TopicPage';
 
 import {
     ApolloClient,
@@ -45,6 +46,7 @@ function App() {
                     <Routes>
                         <Route exact path="/" element={<Home />} />
                         {/* <Route path="/topic/:topicId" element={<TopicPage />} /> */}
+                        <Route path="/topicPage" element={<TopicPage />} />{/*this one is for testing*/}
                         <Route exact path="/login" element={< Login/>} />
                         <Route exact path="/signup" element={<Signup />} />
                         <Route exact path="/thread/" element={<SingleThread />} />
