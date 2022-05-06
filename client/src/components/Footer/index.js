@@ -9,7 +9,7 @@ const Footer = () => {
               &copy;2022 by 4 Guys
             </div>         
           <div className="d-flex align-items-center mx-3 ms-auto">
-            <div className="col-md">
+            <div className="col-md mt-1">
               <h6>Contact Us</h6>
               <a href="https://ericbwebdev86.github.io/abn-dev-portfolio/" target="_blank" rel="noreferrer noopener">Eric Bates</a><br />
               <a href="https://p-fassbender.github.io/react-portfolio/" target="_blank" rel="noreferrer noopener">Preston Fassbender</a><br />

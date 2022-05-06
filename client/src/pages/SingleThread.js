@@ -6,7 +6,7 @@ const SingleThread = (props) => {
   //   }
 
   return (
-
+    <main>
       <div className="card m-4">
         <h5 className="card-header text-center">Response</h5>
         <div className="d-flex topBorder">
@@ -18,7 +18,7 @@ const SingleThread = (props) => {
           </div>
         </div>
       </div>
-
+    </main>
   );
 };
 
