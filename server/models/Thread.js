@@ -18,11 +18,11 @@ const threadSchema = new Schema({
   },
   replies: [Reply.schema],
   replyCount: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Reply'
-      }
-    ]
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Reply'
+    }
+  ]
 });
 
 // set up pre-save middleware to create password
