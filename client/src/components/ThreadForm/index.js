@@ -46,29 +46,30 @@ const ThreadForm = () => {
 
   return (
     <div>
-      <h1>Threads</h1>
-      <p className={`m-0 ${characterCount === 100 ? 'text-error' : ''}`}>
+      <h2 className='card-header text-center'>Start a new Thread</h2>
+      <p className={`ms-3 mt-1 mb-1 ${characterCount === 100 ? 'text-error' : ''}`}>
         Character Count: 0/100
         {error && <span className="ml-2">Something went wrong...</span>}
       </p>
       <form
-        className="flex-row justify-center justify-space-between-md align-stretch"
+        className="mx-3 flex-row justify-center justify-space-between-md align-stretch"
         onSubmit={handleFormSubmit}>
-        <textarea
-          placeholder="Add a new thread!"
-          value={formState.threadTitle}
-          className="form-input col-12 col-md-9"
-          onChange={handleChange}
-        ></textarea>
-        
-        <textarea
-          placeholder="Add content to thread."
-          value={formState.threadContent}
-          className="form-input col-12 col-md-9"
-          onChange={handleChange}
-        ></textarea>
-    
-        <button className="btn col-12 col-md-3" type="submit">
+        <div>
+          <textarea
+            placeholder="New thread title here."
+            value={formState.threadTitle}
+            className="form-input col-12"
+            onChange={handleChange}
+          ></textarea>
+          
+          <textarea rows='10'
+            placeholder="Add content to thread."
+            value={formState.threadContent}
+            className="form-input col-12"
+            onChange={handleChange}
+          ></textarea>
+        </div>  
+        <button className="btn col-12" type="submit">
           Submit
         </button>
       </form>
