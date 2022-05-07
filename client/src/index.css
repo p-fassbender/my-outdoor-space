@@ -1,10 +1,15 @@
 :root {
-  --colorOne: #6cb476;
-  --colorTwo: #d0fcd6;
-  --colorThree: #004d0a;
+  --colorOne: rgba(144, 169, 85, 0.9);
+  --colorTwo: rgba(236, 243, 158, 0.9);
+  --colorThree: rgba(79, 119, 45);
 }
 
 body {
+  background-image: url(./assets/images/trees01.jpg);
+  background-position: center;
+  background-size: cover;
+  background-color: rgba(236, 243, 158);
+
   margin: 0;
   min-height: 100vh;
   position: relative;
@@ -21,12 +26,6 @@ code {
     monospace;
 }
 
-/* main {
-  position: relative;
-  min-height: 100vh;
-  padding-bottom: 123px;
-} */
-
 footer {
   background-color: var(--colorOne);
   padding-left: 0 !important;
@@ -36,7 +35,7 @@ footer {
 }
 
 nav {
-  background-color: var(--colorOne);
+  background-color: rgba(144, 169, 85, 0.7);
 }
 
 .threadBG {
@@ -49,6 +48,11 @@ nav {
 
 .card {
   border: 2px solid var(--colorThree);
+  background-color: rgba(236, 243, 158, 0.4);
+}
+
+.card-header {
+  background-color: rgba(79, 119, 45, 0.4);
 }
 
 .cardColOne {
@@ -62,3 +66,14 @@ nav {
 .topBorder {
   border-top: 2px solid var(--colorThree)
 }
+
+a {
+  color: #002913;
+  text-decoration: none;
+}
+
+li {
+  font-size: larger;
+  font-weight: bold;
+}
+
