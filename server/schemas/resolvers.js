@@ -81,34 +81,37 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        addReply: async (parent, { threads }, context) => {
-            console.log(context);
-            if (context.thread) {
-                const thread = new Reply({ Thread });
 
-                await Reply.findByIdAndUpdate(context.reply._id, { $push: { threads: thread } });
+        addReply: async (parent, { threadId, replyContent }, context) => {
+            if (context.user) {
+                const updatedThread = await Thread.findOneAndUpdate(
+                    { _id: threadId },
+                    { $push: { replies: { replyContent, username: context.user.username } } },
+                    { new: true, runValidators: true }
+                );
 
-                return thread;
-            }
+            return updatedThread;
+        }
 
             throw new AuthenticationError('Not logged in');
-        },
-        updateReply: async (parent, args, context) => {
-            if (context.thread) {
-                return await Thread.findByIdAndUpdate(context.thread._id, args, { new: true });
-            }
-        },
-        deleteReply: async (parent, { replyId }, context) => {
-            if (context.thread) {
-                const updateThread = await Thread.findOneAndUpdate(
-                    { _id: context.thread._id },
-                    { $pull: { replies: { replyId: replyId } } },
-                    { new: true }
-                );
-                return updateThread;
-            }
-        },
-    }
+    },
+
+    updateReply: async (parent, args, context) => {
+        if (context.thread) {
+            return await Thread.findByIdAndUpdate(context.thread._id, args, { new: true });
+        }
+    },
+    deleteReply: async (parent, { replyId }, context) => {
+        if (context.thread) {
+            const updateThread = await Thread.findOneAndUpdate(
+                { _id: context.thread._id },
+                { $pull: { replies: { replyId: replyId } } },
+                { new: true }
+            );
+            return updateThread;
+        }
+    },
+}
 }
 
 module.exports = resolvers;

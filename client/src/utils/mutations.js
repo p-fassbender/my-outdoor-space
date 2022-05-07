@@ -31,3 +31,12 @@ export const ADD_THREAD = gql`
         }
     }
 `;
+
+export const ADD_REPLY = `gql
+    mutation addReply($replyContent: String!) {
+        addReply(replyContent: $replyContent) {
+            _id
+            replyContent
+        }
+    }
+`

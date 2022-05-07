@@ -23,7 +23,6 @@ const typeDefs = gql`
   }
   type Reply {
       _id: ID
-      replyTitle: String
       replyContent: String
       user: [User]
   }
