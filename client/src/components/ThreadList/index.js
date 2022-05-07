@@ -1,11 +1,16 @@
 import React from 'react';
 //import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_THREADS } from '../../utils/queries';
 
-const ThreadList = ({ threads }) => {
+const ThreadList = ({threads}) => {
+   
+   
 
     return (
         <div>
-            <h2>Thread Bare...</h2>
+            <h2> Current Threads </h2>
+            <div>
              {threads &&
              threads.map(thread => (
                 <div key={thread._id} className="card mb-3">
@@ -17,6 +22,7 @@ const ThreadList = ({ threads }) => {
                     </h3>
                 </div>
             ))}
+            </div>
         </div>
     )
 

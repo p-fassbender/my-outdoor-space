@@ -48,12 +48,14 @@ const resolvers = {
             throw new AuthenticationError('Not logged in');
         },
         addThread: async (parent, args, context) => {
+            console.log(context);
             if (context.user) {
+
 
                 const thread = await Thread.create(args);
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { threads: thread._id } },
+                    { $push: { threads: thread } },
                     { new: true }
                 )
                 //  const topic = new Thread({ Topic });
