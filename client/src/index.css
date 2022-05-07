@@ -1,10 +1,11 @@
 :root {
-  --colorOne: #6cb476;
-  --colorTwo: #d0fcd6;
+  --colorOne: #008000;
+  --colorTwo: #339e01;
   --colorThree: #004d0a;
 }
 
 body {
+  color: #38B000;
   margin: 0;
   min-height: 100vh;
   position: relative;
@@ -33,6 +34,7 @@ footer {
   padding-right: 0 !important;
   bottom: 0;  
   position: absolute;
+  box-shadow: 0px 30px 50px 0px var(--colorOne)
 }
 
 nav {
@@ -45,6 +47,7 @@ nav {
   background-color: var(--colorTwo);
   padding-left: 0 !important;
   padding-right: 0 !important;
+  box-shadow: 0px 0px 50px var(--colorOne)
 }
 
 .card {
@@ -61,4 +64,9 @@ nav {
 
 .topBorder {
   border-top: 2px solid var(--colorThree)
+}
+
+a {
+  color: #002913;
+  text-decoration: none;
 }
