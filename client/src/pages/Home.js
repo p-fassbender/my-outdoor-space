@@ -6,8 +6,8 @@ const Home = () => {
 
     return (
         <main>
-            <div className='flex-row justify-space-between'>
-            </div>
+
+
             <div className="card m-4">
                 <h2 className="card-header text-center">Camping</h2>
 
