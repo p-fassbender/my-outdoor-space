@@ -17,8 +17,6 @@ const SingleThread = props => {
     return <div>Loading...</div>;
   }
 
-  console.log(thread)
-
   return (
     <main>
       <div className="card m-4">
