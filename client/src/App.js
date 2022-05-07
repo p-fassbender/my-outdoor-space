@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Header from './components/Header';
@@ -49,7 +49,7 @@ function App() {
                         <Route path="/topicPage" element={<TopicPage />} />{/*this one is for testing*/}
                         <Route exact path="/login" element={< Login/>} />
                         <Route exact path="/signup" element={<Signup />} />
-                        <Route exact path="/thread/" element={<SingleThread />} />
+                        <Route name="thread" path="/:id" element={<SingleThread  />} />
                     </Routes>
                     <Footer />
                 </div>
