@@ -1,12 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ThreadForm from '../components/ThreadForm';
-import ThreadList from '../components/ThreadList';
 
 const Home = () => {
 
+
     return (
         <main>
+            <div className='flex-row justify-space-between'>
+
+
+                <h3>
+                    <Link to={`/TopicPage`}>Topics</Link>
+                </h3>
+
+
+            </div>
             <div className="card m-4">
                 <h2 className="card-header text-center">Camping</h2>
 
@@ -124,13 +132,9 @@ const Home = () => {
                         <Link to="/SwapMeet" className="m-2">Swap Meet</Link>
                     </div>
                 </div>
-
-
             </div>
-
         </main >
     );
 };
 
 export default Home;
-

@@ -1,27 +1,24 @@
 const mongoose = require('mongoose');
-
 const { Schema } = mongoose;
-const User = require('./User');
-
 
 const replySchema = new Schema({
-  replyTitle: {
-    type: String,
-    required: true,
-  },
-  replyContent: {
-      type: String,
-      required: true,
-  },
-  user: {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
-  }
+    title: {
+        type: String,
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true
+    },
+    thread: {
+        type: String,
+        required: true
+    }
 });
 
-// set up pre-save middleware to create password
-
-
 const Reply = mongoose.model('Reply', replySchema);
-
 module.exports = Reply;

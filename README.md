@@ -2,7 +2,7 @@
 
 # My Outdoor Space 
 
-The aim of this project was to work in as a team and create a MERN stack single-page application that works with real-world data to solve a real-world challenge, with a focus on data and user demand
+The aim of this project was to work as a team and create a MERN stack single-page application that works with real-world data to solve a real-world challenge, with a focus on data and user demand
 
 ## Table of Contents
 [Technologies Used](#technologies-used) <br>
