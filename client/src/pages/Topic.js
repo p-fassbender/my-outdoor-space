@@ -4,6 +4,8 @@ import { useQuery } from '@apollo/client';
 import { QUERY_THREADS } from '../utils/queries';
 import ThreadForm from '../components/ThreadForm'
 import ThreadList from '../components/ThreadList';
+import Auth from '../utils/auth';
+
 
 const Topic = () => {
     const location = useLocation();
@@ -19,9 +21,12 @@ const Topic = () => {
     // query all threads for state.currentTopic
     return (
         <>
-            <div className='card m-4'>
-                <ThreadForm topic={state.currentTopic} />
-            </div>
+            {Auth.loggedIn() && (
+                <div className='card m-4'>
+                    <ThreadForm topic={state.currentTopic} />
+                </div>
+            )}
+
             <div>
                 <ThreadList threads={threads} />
             </div>
