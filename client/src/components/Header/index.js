@@ -12,11 +12,11 @@ const Header = () => {
   return (
    
         <nav className="navbar navbar-expand-md">
-          <div className='container-fluid'>
+          <div className='container'>
             <Link to="/">
               <h1>My Outdoor Space</h1>
             </Link>
-            <div className='collapse navbar-collapse'>
+            <div className='navbar-collapse'>
               <ul className='navbar-nav ms-auto mb-2 mb-lg-0 justify-content-end'>
                 <li className='nav-item'>
                   {Auth.loggedIn() ? (
