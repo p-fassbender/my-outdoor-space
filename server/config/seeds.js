@@ -1,149 +1,133 @@
 const db = require('./connection');
-const { User, Topic, Genre, Thread } = require('../models');
+const { Topic, Genre, Thread, Reply, User } = require('../models');
+const { UserInputError } = require('apollo-server-express');
 
 db.once('open', async () => {
+    // genres
+    await Genre.deleteMany();
+    const genres = await Genre.insertMany([
+        { title: 'Camping' },
+        { title: 'Outdoor Living Room' },
+        { title: 'Survival' },
+        { title: 'General Discussion' },
+    ]);
+    console.log('genres seeded');
 
-  await Genre.deleteMany();
+    // topics
+    await Topic.deleteMany();
+    const topics = await Topic.insertMany([
+        {
+            title: 'Carry In',
+            description:'Talk about the long haul',
+            genre:'Camping'
+        },
+        {
+            title: 'Tent Camping',
+            description:'All things related to camping in a tent',
+            genre:'Camping'
+        },
+        {
+            title: 'Camper Camping',
+            description:'Park wherever and enjoy nature from the comfort of your own mobile home',
+            genre:'Camping'
+        },
+        {
+            title: 'Glamping',
+            description:'For the people that like the outdoors, but not being outdoors',
+            genre:'Camping'
+        },
+        {
+            title: 'Patio',
+            description:'Wicker, wood, and aluminum galore',
+            genre:'Outdoor Living Room'
+        },
+        {
+            title: 'Decks',
+            description:'There\'s just something about a large deck that makes me excited',
+            genre:'Outdoor Living Room'
+        },
+        {
+            title: 'Water Features',
+            description:'Would you rather have a bubbler or a water fountain in the middle of your yard',
+            genre:'Outdoor Living Room'
+        },
+        {
+            title: 'Weekend Trips',
+            description:'Destinations and strategies for the weekend warriors out there',
+            genre:'Survival'
+        },
+        {
+            title: 'Week Long Trips',
+            description:'7 days of lifelong memories. Unless it rains',
+            genre:'Survival'
+        },
+        {
+            title: 'Extended Period Trips',
+            description:'Tips and Trick to survival that long adventure away from home',
+            genre:'Survival'
+        },
+        {
+            title: 'The Lounge',
+            description:'Come here to talk about anything and everything',
+            genre:'General Discussion'
+        },
+        {
+            title: 'Swap Meet',
+            description:'Buy, Sell, Trade',
+            genre:'General Discussion'
+        }
+    ]);
+    console.log('topics seeded');
 
-  const genres = await Genre.insertMany([
-    { genreTitle: 'My Outdoor Space Community Forums' },
-    { genreTitle: 'Tent Camping' },
-    { genreTitle: 'Glamping' },
-    { genreTitle: 'Outdoor Room' },
-    { genreTitle: 'Survival' }
-  ]);
+    await Reply.deleteMany();
+    await User.deleteMany();
+    // // threads
+    await Thread.deleteMany();
+    // await Thread.insertMany([
+    //     {
+    //         title: 'Community rules READ BEFORE POSTING TO AVOIND GETTING BANNED',
+    //         content: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
+    //         username: 'username',
+    //         topic: 'Carry In'
+    //     },
+    //     {
+    //         title: 'Suggestions for new genres or topics',
+    //         content: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
+    //         username: 'username',
+    //         topic: 'Carry In'
+    //     },
+    //     {
+    //         title: 'Where to tent camp in WI?',
+    //         content: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
+    //         username: 'username',
+    //         topic: 'Carry In'
+    //     },
+    //     {
+    //         title: 'When glamping how much is too much?',
+    //         content: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
+    //         username: 'username',
+    //         topic: 'Tent Camping'
+    //     },
+    //     {
+    //         title: 'DIY outdoor room furniture',
+    //         content: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
+    //         username: 'username',
+    //         topic: 'Tent Camping'
+    //     },
+    //     {
+    //         title: 'Where to camp with only a knife',
+    //         content: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
+    //         username: 'username',
+    //         topic: 'Tent Camping'
+    //     },
+    //     {
+    //         title: 'I think I saw a skinwalker',
+    //         content: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
+    //         username: 'username',
+    //         topic: 'Camper Camping'
+    //     }
+    // ])
+    // console.log('threads seeded!')
 
-  console.log('genres seeded');
-
-  await Topic.deleteMany();
-
-  const topics = await Topic.insertMany([
-    {
-      topicTitle: 'Technical Issues',
-      topicDescription:
-        'Genre/Topic addtions and general techinical issues',
-    },
-    {
-        topicTitle: 'New User Introductions',
-        topicDescription:
-          'Say hello and introduce yourself',
-      },
-      {
-        topicTitle: 'Where To Camp',
-        topicDescription:
-          'Awesome places to camp, and terrible places to avoid.',
-      },
-      {
-        topicTitle: 'All things tents',
-        topicDescription:
-          'Intense tense in tents.',
-      },
-      {
-        topicTitle: 'Tent Camping General',
-        topicDescription:
-          'All things tent camping',
-      },
-      {
-        topicTitle: 'Glamping General',
-        topicDescription:
-          'All things glamping',
-      },
-      {
-        topicTitle: 'RVs',
-        topicDescription:
-          'All things RVs',
-      },
-      {
-        topicTitle: 'Glamping Tech',
-        topicDescription:
-          'Stay connected',
-      },
-      {
-        topicTitle: 'Outdoor Room General',
-        topicDescription:
-          'All things outdoor room',
-      },
-      {
-        topicTitle: 'Outdoor furniture',
-        topicDescription:
-          'All things outdoor furniture',
-      },
-      {
-        topicTitle: 'Survival General',
-        topicDescription:
-          'All things survival',
-      },
-      {
-        topicTitle: 'Survival Gear',
-        topicDescription:
-          'Gear to help you surive the wild world',
-      },
-      {
-        topicTitle: 'Innawoods stories',
-        topicDescription:
-          'Spooky outdoors stories',
-      },
-  ]);
-
-  console.log('topics seeded');
-
-  await Thread.deleteMany();
-  await Thread.insertMany([
-      {
-          threadTitle: 'Community rules READ BEFORE POSTING TO AVOIND GETTING BANNED',
-          threadContent: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
-      },
-      {
-        threadTitle: 'Suggestions for new genres or topics',
-        threadContent: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
-      },
-      {
-        threadTitle: 'Where to tent camp in WI?',
-        threadContent: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
-      },
-      {
-        threadTitle: 'When glamping how much is too much?',
-        threadContent: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
-      },
-      {
-        threadTitle: 'DIY outdoor room furniture',
-        threadContent: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
-      },
-      {
-        threadTitle: 'Where to camp with only a knife',
-        threadContent: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
-      },
-      {
-        threadTitle: 'I think I saw a skinwalker',
-        threadContent: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere cumque accusamus vel, nostrum nemo nesciunt rem officiis. Distinctio quibusdam ullam consectetur rem, quisquam officia fugiat corporis, tenetur blanditiis aspernatur dolorum?',
-      },
-  ])
-console.log('threads seeded!')
-  await User.deleteMany();
-
-  await User.create({
-    username: 'imauser',
-    password: 'imauser',
-    accessLevel: 'user'
-  });
-
-  await User.create({
-    username: 'imauser2',
-    password: 'imauser2',
-    accessLevel: 'user'
-  });
-  await User.create({
-    username: 'imamod',
-    password: 'imamod',
-    accessLevel: 'mod'
-  });
-  await User.create({
-    username: 'imamod2',
-    password: 'imamod2',
-    accessLevel: 'mod'
-  });
-
-  console.log('users seeded');
-
-  process.exit();
+    process.exit();
 });

@@ -11,10 +11,10 @@ const ThreadList = ({threads}) => {
              threads.map(thread => (
                 <div key={thread._id} className="card mb-3">
                     <h3 className='card-header'>
-                        {thread.threadTitle}
+                        {thread.title}
                     </h3>
                     <p>
-                        {thread.threadContent}
+                        {thread.content}
                     </p>
                     <Link to={`/thread/${thread._id}`}> <button className="btn">
                         Join the discussion

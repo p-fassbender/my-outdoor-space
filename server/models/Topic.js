@@ -1,30 +1,28 @@
 const mongoose = require('mongoose');
-
-const { Schema } = mongoose;
 const Thread = require('./Thread');
+const { Schema } = mongoose;
 
-
-const topicSchema = new Schema({
-  topicTitle: {
-    type: String,
-    required: true,
-  },
-  topicDescription: {
-      type: String,
-      required: true,
-  },
-  threads: [Thread.schema],
-  threadCount: [
+const topicSchema = new Schema(
     {
-      type: Schema.Types.ObjectId,
-      ref: 'Thread'
+        title: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: true
+        },
+        genre: {
+            type: String,
+            required: true
+        },
+        threads: [Thread.schema]
     }
-  ]
+);
+
+topicSchema.virtual('threadCount').get(function () {
+    return this.threads.length;
 });
 
-// set up pre-save middleware to create password
-
-
 const Topic = mongoose.model('Topic', topicSchema);
-
 module.exports = Topic;

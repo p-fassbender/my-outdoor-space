@@ -3,24 +3,24 @@ import { useMutation } from '@apollo/client';
 import { ADD_THREAD } from '../../utils/mutations';
 import { QUERY_THREADS } from '../../utils/queries';
 
-
-const ThreadForm = () => {
-
+const ThreadForm = ({ topic }) => {
     const [formState, setFormState] = useState({ threadTitle: '', threadContent: '' });
     const [characterCount, setCharacterCount] = useState(0);
-    const [addThread, { error }] = useMutation(ADD_THREAD, {
-        update(cache, { data: { addThread } }) {
-            try {
-                const { threads } = cache.readQuery({ query: QUERY_THREADS });
-                cache.writeQuery({
-                    query: QUERY_THREADS,
-                    data: { threads: [addThread, ...threads] },
-                });
-            } catch (e) {
-                console.log(error)
+
+    const [addThread, { error }] = useMutation(ADD_THREAD,
+        {
+            update(cache, { data: { addThread } }) {
+                try {
+                    const { threads } = cache.readQuery({ query: QUERY_THREADS });
+                    cache.writeQuery({
+                        query: QUERY_THREADS,
+                        data: { threads: [addThread, ...threads] },
+                    });
+                } catch (e) {
+                    console.log(error)
+                }
             }
-        }
-    });
+        });
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -40,7 +40,7 @@ const ThreadForm = () => {
         try {
             // add thread to database
             await addThread({
-                variables: { threadTitle: formState.threadTitle, threadContent: formState.threadContent }
+                variables: { title: formState.threadTitle, content: formState.threadContent, topic: topic }
             });
 
             // clear form value
