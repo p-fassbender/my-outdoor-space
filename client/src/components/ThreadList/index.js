@@ -5,15 +5,14 @@ const ThreadList = ({threads}) => {
    
     return (
         <div>
-            <h2> Current Threads </h2>
-            <div>
+            <div className='m-4'>
              {threads &&
              threads.map(thread => (
                 <div key={thread._id} className="card mb-3">
                     <h3 className='card-header'>
                         {thread.title}
                     </h3>
-                    <p>
+                    <p className='mx-3 mt-2'>
                         {thread.content}
                     </p>
                     <Link to={`/thread/${thread._id}`}> <button className="btn">
