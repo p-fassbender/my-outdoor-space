@@ -17,7 +17,7 @@ const TopicList = ({ genre }) => {
                         <p className="m-3">Icon</p>
                     </div>
                     <div className="col-10 d-flex align-items-center">
-                        <Link to='/topic' state={{ currentTopic: topic.title }}>{topic.title}</Link>
+                        <Link to='/topic' state={{ currentTopic: topic.title }}className="ps-3">{topic.title}</Link>
                     </div>
                 </li>
             ))}

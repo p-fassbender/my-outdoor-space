@@ -71,7 +71,7 @@ Any questions feel free to contact us via our githubs or by sending any of us an
 * Email: fassbenderp0551@gmail.com
 * GitHub:  https://github.com/p-fassbender
 ### Ryan
-* Email: 
+* Email: rtthiel8@gmail.com
 * GitHub: https://github.com/rtthiel8
 
 ## License

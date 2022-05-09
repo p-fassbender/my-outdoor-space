@@ -34,39 +34,43 @@ const LoginForm = () => {
     };
 
     return (
-        <div className='container' style={{maxWidth: "500px"}}>
-            <h2>Login</h2>
-            <form onSubmit={handleFormSubmit}>
-                <div className='form-group'>
-                    <label htmlFor='usernameInput'>Username</label>
-                    <input
-                        type={'text'}
-                        className='form-control'
-                        id='usernameInput'
-                        name='username'
-                        placeholder='Username'
-                        onChange={handleChange}
-                    />
+        <div className='d-flex justify-content-center'>
+            <div className='card m-4' style={{maxWidth: "600px"}}>
+                <div>
+                    <h2 className='card-header text-center'>Login</h2>
+                    <form onSubmit={handleFormSubmit} className="m-3">
+                        <div className='form-group mb-2'>
+                            <label htmlFor='usernameInput'>Username</label>
+                            <input
+                                type={'text'}
+                                className='form-control'
+                                id='usernameInput'
+                                name='username'
+                                placeholder='Username'
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className='form-group mb-3'>
+                            <label htmlFor='passwordInput'>Password</label>
+                            <input
+                                type={'password'}
+                                className='form-control'
+                                id='passwordInput'
+                                name='password'
+                                placeholder='********'
+                                onChange={handleChange}
+                            />
+                        </div>
+                        {error ? (
+                            <div>
+                                <p className="error-text">The provided credentials are incorrect</p>
+                            </div>
+                        ) : null}
+                        <button type={'submit'} className='btn btn-primary'>Submit</button>
+                        <Link to="/signup"> Don't have an account? Sign up now!</Link>
+                    </form>
                 </div>
-                <div className='form-group'>
-                    <label htmlFor='passwordInput'>Password</label>
-                    <input
-                        type={'password'}
-                        className='form-control'
-                        id='passwordInput'
-                        name='password'
-                        placeholder='********'
-                        onChange={handleChange}
-                    />
-                </div>
-                {error ? (
-                    <div>
-                        <p className="error-text">The provided credentials are incorrect</p>
-                    </div>
-                ) : null}
-                <button type={'submit'} className='btn btn-primary'>Submit</button>
-                <Link to="/signup"> Don't have an account? Sign up now!</Link>
-            </form>
+            </div>
         </div>
     )
 }
