@@ -29,12 +29,23 @@ The aim of this project was to work as a team and create a MERN stack single-pag
 * Concurrently
 
 ## Installation
-Navigate to the root directory in the terminal and initialize the project with **npm install** to install all the proper node module dependencies.
+### Clone Repository
+* *https:* git clone [https://github.com/p-fassbender/my-outdoor-space.git](https://github.com/p-fassbender/my-outdoor-space.git)
+* *ssh:* git clone [git@github.com:p-fassbender/my-outdoor-space.git](git@github.com:p-fassbender/my-outdoor-space.git)
+
+### Install Dependencies
+* All NPM packages required for this application are already listed as dependencies in the package.json file. Run the command **npm i** command in your terminal at the root directory level to install the packages.
+* Ensure you have Node.js installed on your machine. The application will be invoked by entering node server.js in the command line.
 
 ## Use
-Navigate to the root directory in the terminal and type **npm run develop** to run the project
+This program can be run through a browser using the provided link to the the deployed application in the [Media](#media) section. Alternatively, to run this application locally you will need to:
 
-Navigate to http://localhost:3000/ in your browser
+* Clone this repository to receive all of the files
+* Set up your environment variables in a .env file
+* Run **npm install** command in your terminal at the root directory level to set up all of the dependencies
+* Initialize and populate your database by running the **node server/config/seeds** command in your terminal at the root directory level
+* Run **npm run develop** to start the application's connection
+* Go to the url of the application [http://localhost:3000/](http://localhost:3000/) to begin using it
 
 ## Tests
 There are no formal tests for this project

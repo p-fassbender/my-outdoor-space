@@ -10,13 +10,11 @@ import Auth from '../utils/auth';
 const Topic = () => {
     const location = useLocation();
     const state = location.state;
-    console.log(state.currentTopic)
 
     const { data } = useQuery(QUERY_THREADS, {
-        variables: { genre: state.currentTopic }
+        variables: { topic: state.currentTopic }
     })
     const threads = data?.threads || [];
-    console.log(threads)
 
     // query all threads for state.currentTopic
     return (
