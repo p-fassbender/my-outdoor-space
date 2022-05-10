@@ -9,6 +9,8 @@ const TopicList = ({ genre }) => {
     })
     const topicsArray = data?.topics || [];
 
+ //   console.log(topicsArray)
+
     return (
         <>
             {topicsArray.map(topic => (

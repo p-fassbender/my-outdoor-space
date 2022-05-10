@@ -26,14 +26,7 @@ export const QUERY_TOPICS = gql`
                 image
                 username
                 topic
-                replyCount
-                replies {
-                    _id
-                    title
-                    content
-                    username
-                    thread
-                }
+             
             }
         }
     }
@@ -48,13 +41,9 @@ export const QUERY_THREADS = gql`
             image
             username
             topic
-            replyCount
+            replyCount 
             replies {
-                _id
-                title
                 content
-                username
-                thread
             }
         }
     }
@@ -69,14 +58,7 @@ export const QUERY_THREAD = gql`
             image
             username
             topic
-            replyCount
-            replies {
-                _id
-                title
-                content
-                username
-                thread
-            }
+   
         }
     }
 `

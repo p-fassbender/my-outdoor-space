@@ -31,29 +31,17 @@ export const ADD_THREAD = gql`
             image
             username
             topic
-            replyCount
-            replies {
-                _id
-                title
-                content
-                username
-                thread
-            }
+        
         }
     }
 `;
 
 export const ADD_REPLY = gql`
-    mutation addReply($threadId: ID!, $content: String!) {
+    mutation addReply($threadId: String!, $content: String!) {
         addReply(threadId: $threadId, content: $content) {
             _id
-            replyCount
-            replies {
-                _id
-                content
-                createdAt
-                username
-            }
+            content
+            username
         }
     }
 `
