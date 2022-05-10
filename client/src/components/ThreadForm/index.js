@@ -11,10 +11,11 @@ const ThreadForm = ({ topic }) => {
         {
             update(cache, { data: { addThread } }) {
                 try {
-                    const { threads } = cache.readQuery({ query: QUERY_THREADS });
+                    const { threads } = cache.readQuery({ query: QUERY_THREADS, variables: {topic:topic}});
                     cache.writeQuery({
                         query: QUERY_THREADS,
                         data: { threads: [addThread, ...threads] },
+                        variables: { topic: topic }
                     });
                 } catch (e) {
                     console.log(error)
