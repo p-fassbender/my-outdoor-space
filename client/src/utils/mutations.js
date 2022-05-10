@@ -42,3 +42,18 @@ export const ADD_THREAD = gql`
         }
     }
 `;
+
+export const ADD_REPLY = gql`
+    mutation addReply($threadId: ID!, $content: String!) {
+        addReply(threadId: $threadId, content: $content) {
+            _id
+            replyCount
+            replies {
+                _id
+                content
+                createdAt
+                username
+            }
+        }
+    }
+`

@@ -28,7 +28,6 @@ const typeDefs = gql`
 
     type Reply {
         _id: ID
-        title: String
         content: String
         username: String
         thread: String

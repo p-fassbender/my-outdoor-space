@@ -5,7 +5,7 @@ import { ADD_REPLY } from '../../utils/mutations';
 
 const ReplyForm = ({ threadId }) => {
 
-    const [replyContent, setContent] = useState('');
+    const [content, setContent] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const [addReply, { error }] = useMutation(ADD_REPLY);
 
@@ -22,7 +22,7 @@ const ReplyForm = ({ threadId }) => {
         try {
 
             await addReply({
-                variable: { replyContent, threadId }
+                variable: { content, threadId }
             });
 
             setContent('');
@@ -33,7 +33,7 @@ const ReplyForm = ({ threadId }) => {
     };
 
     return (
-        <div>
+        <div className='m-4'>
             <p className="m-0">
                 Character Count: {characterCount}/280
                 {error && <span className="ml-2">Something went wrong...</span>}
@@ -42,8 +42,8 @@ const ReplyForm = ({ threadId }) => {
                 onSubmit={handleFormSubmit}
             >
                 <textarea
-                    placeholder="Leave a reaction to this thought..."
-                    value={replyContent}
+                    placeholder="Reply to this thread."
+                    value={content}
                     className="form-input col-12 col-md-9"
                     onChange={handleChange}
                 ></textarea>

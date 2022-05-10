@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Header from './components/Header';
@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Signup from './pages/Signup'
 import SingleThread from './pages/SingleThread';
+import TopicPage from './pages/TopicPage';
 import Topic from './pages/Topic';
 
 import {
@@ -46,9 +47,10 @@ function App() {
                     <Routes>
                         <Route exact path="/" element={<Home />} />
                         {/* <Route path="/topic/:topicId" element={<TopicPage />} /> */}
+                        <Route path="/topicPage" element={<TopicPage />} />{/*this one is for testing*/}
                         <Route exact path="/login" element={< Login/>} />
                         <Route exact path="/signup" element={<Signup />} />
-                        <Route name="thread" path="/:id" element={<SingleThread  />} />
+                        <Route exact path="/thread/:id" element={<SingleThread  />} />
                         <Route exact path="/topic" element={<Topic />} />
                     </Routes>
                     <Footer />

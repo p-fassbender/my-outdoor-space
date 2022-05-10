@@ -59,3 +59,24 @@ export const QUERY_THREADS = gql`
         }
     }
 `
+
+export const QUERY_THREAD = gql`
+    query Thread($id: ID!) {
+        thread(_id: $id) {
+            _id
+            title
+            content
+            image
+            username
+            topic
+            replyCount
+            replies {
+                _id
+                title
+                content
+                username
+                thread
+            }
+        }
+    }
+`
