@@ -1,26 +1,22 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_REPLY } from '../../utils/mutations';
-import { QUERY_THREAD} from '../../utils/queries'
+import { QUERY_GENRES, QUERY_ME, QUERY_THREAD, QUERY_THREADS, QUERY_TOPICS, QUERY_USER } from '../../utils/queries';
 
-const ReplyForm = ({id,thread}) => {
+const ReplyForm = ({thread}) => {
     const [formState, setFormState] = useState({content: ''});
     const [characterCount, setCharacterCount] = useState(0);
     const [addReply, { error }] = useMutation(ADD_REPLY,
         {
-            update(cache) {
-                try {
-                    const { thread } = cache.readQuery({ query: QUERY_THREAD, variables: {id:id}});
-                    console.log(thread)
-                    cache.writeQuery({
-                        query: QUERY_THREAD,
-                        data: { thread: thread },
-                        variables: { id: id }
-                    });
-                } catch (e) {
-                    console.log(error)
-                }
-            }
+            refetchQueries:[
+                QUERY_GENRES,
+                QUERY_TOPICS,
+                QUERY_THREADS,
+                QUERY_ME,
+                QUERY_USER,
+                QUERY_THREAD
+            ]
+
         });
 
     const handleChange = event => {

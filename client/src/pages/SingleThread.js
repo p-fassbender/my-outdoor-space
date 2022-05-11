@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_THREAD } from "../utils/queries";
@@ -30,7 +30,7 @@ const SingleThread = props => {
             </div>
             {Auth.loggedIn() && (
                 <div className='card m-4'>
-                    <ReplyForm id={id} thread={thread.title}/>
+                    <ReplyForm thread={thread.title}/>
                 </div>
             )}
 

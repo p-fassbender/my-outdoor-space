@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_THREAD } from '../../utils/mutations';
-import { QUERY_THREADS } from '../../utils/queries';
+import { QUERY_GENRES, QUERY_ME, QUERY_THREAD, QUERY_THREADS, QUERY_TOPICS, QUERY_USER } from '../../utils/queries';
 
 const ThreadForm = ({ topic }) => {
     const [formState, setFormState] = useState({ threadTitle: '', threadContent: '' });
@@ -9,18 +9,14 @@ const ThreadForm = ({ topic }) => {
 
     const [addThread, { error }] = useMutation(ADD_THREAD,
         {
-            update(cache, { data: { addThread } }) {
-                try {
-                    const { threads } = cache.readQuery({ query: QUERY_THREADS, variables: {topic:topic}});
-                    cache.writeQuery({
-                        query: QUERY_THREADS,
-                        data: { threads: [addThread, ...threads] },
-                        variables: { topic: topic }
-                    });
-                } catch (e) {
-                    console.log(error)
-                }
-            }
+            refetchQueries:[
+                QUERY_GENRES,
+                QUERY_TOPICS,
+                QUERY_THREADS,
+                QUERY_ME,
+                QUERY_USER,
+                QUERY_THREAD
+            ]
         });
 
     const handleChange = (event) => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
+import ThreadList from '../components/ThreadList';
 
 const MyProfile = () => {
     const { data } = useQuery(QUERY_ME)
@@ -8,9 +9,8 @@ const MyProfile = () => {
 
 
     return (
-        <div className='d-flex justify-content-center'>
-
-            <div className='card m-4' style={{minWidth: "600px"}}>
+        <div className='d-flex flex-column justify-content-center'>
+            <div className='card m-4' style={{ minWidth: "600px" }}>
                 <div>
                     <h2 className='card-header text-center'>My Profile</h2>
                     <div className="m-3">
@@ -35,9 +35,8 @@ const MyProfile = () => {
                     </div>
                 </div>
             </div>
+            <ThreadList threads={me.threads}></ThreadList>
         </div>
-
-        
     )
 }
 export default MyProfile;
