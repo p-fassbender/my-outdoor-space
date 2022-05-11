@@ -48,7 +48,7 @@ db.once('open', async () => {
         },
         {
             title: 'Water Features',
-            description:'Would you rather have a bubbler or a water fountain in the middle of your yard',
+            description:'Is it a bubbler or a water fountain?',
             genre:'Outdoor Living Room'
         },
         {
@@ -63,7 +63,7 @@ db.once('open', async () => {
         },
         {
             title: 'Extended Period Trips',
-            description:'Tips and Trick to survival that long adventure away from home',
+            description:'Tips and trick to surviving that long adventure away from home',
             genre:'Survival'
         },
         {
