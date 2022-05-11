@@ -25,14 +25,13 @@ const ThreadForm = ({ topic }) => {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        if (event.target.value.length <= 100) {
+        if (event.target.value.length <= 200) {
             setFormState({
                 ...formState,
                 [name]: value,
             });
             setCharacterCount(event.target.value.length);
         }
-        console.log(formState)
     };
 
     const handleFormSubmit = async event => {
@@ -55,8 +54,8 @@ const ThreadForm = ({ topic }) => {
     return (
         <div>
             <h2 className='card-header text-center'>Start a new Thread</h2>
-            <p className={`ms-3 mt-1 mb-1 ${characterCount === 100 ? 'text-error' : ''}`}>
-                Character Count: {characterCount}/100
+            <p className={`ms-3 mt-1 mb-1 ${characterCount === 200 ? 'text-error' : ''}`}>
+                Character Count: {characterCount}/200
                 {error && <span className="ml-2">     Something went wrong...</span>}
             </p>
             <form

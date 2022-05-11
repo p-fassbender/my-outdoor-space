@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const replySchema = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
     content: {
         type: String,
         required: true

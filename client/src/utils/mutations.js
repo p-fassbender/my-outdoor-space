@@ -34,7 +34,6 @@ export const ADD_THREAD = gql`
             replyCount
             replies {
                 _id
-                title
                 content
                 username
                 thread
@@ -42,3 +41,14 @@ export const ADD_THREAD = gql`
         }
     }
 `;
+
+export const ADD_REPLY = gql`
+    mutation AddReply($content: String!, $thread: String!) {
+        addReply(content: $content, thread: $thread) {
+            _id
+            content
+            username
+            thread
+        }
+    }
+`

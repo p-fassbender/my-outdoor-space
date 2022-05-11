@@ -29,7 +29,6 @@ export const QUERY_TOPICS = gql`
                 replyCount
                 replies {
                     _id
-                    title
                     content
                     username
                     thread
@@ -51,7 +50,6 @@ export const QUERY_THREADS = gql`
             replyCount
             replies {
                 _id
-                title
                 content
                 username
                 thread
@@ -80,7 +78,6 @@ export const QUERY_ME = gql`
             }
             replies {
                 _id
-                title
                 content
                 username
                 thread
@@ -98,6 +95,25 @@ export const QUERY_USER = gql`
             accessLevel
             threadCount
             replyCount
+        }
+    }
+`
+export const QUERY_THREAD = gql`
+    query Thread($id: ID!) {
+        thread(_id: $id) {
+            _id
+            title
+            content
+            image
+            username
+            topic
+            replyCount
+            replies {
+                _id
+                content
+                username
+                thread
+            }
         }
     }
 `

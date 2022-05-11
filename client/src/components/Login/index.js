@@ -30,7 +30,6 @@ const LoginForm = () => {
             ...formState,
             [name]: value,
         });
-        console.log(formState)
     };
 
     return (

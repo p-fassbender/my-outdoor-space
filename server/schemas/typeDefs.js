@@ -28,7 +28,6 @@ const typeDefs = gql`
 
     type Reply {
         _id: ID
-        title: String
         content: String
         username: String
         thread: String
@@ -68,7 +67,7 @@ const typeDefs = gql`
         addThread(title: String!, content: String!, topic: String!): Thread
         updateThread(title: String, content: String): Thread
         deleteThread(_id: ID!, topic: String!): Thread
-        addReply(title: String!, content: String!, thread: String!): Reply
+        addReply(content: String!, thread: String!): Reply
         updateReply(title: String, content: String): Reply
         deleteReply(_id: ID!): Reply
     }
