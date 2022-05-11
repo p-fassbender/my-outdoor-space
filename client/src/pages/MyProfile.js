@@ -10,7 +10,7 @@ const MyProfile = () => {
 
     return (
         <div className='d-flex flex-column justify-content-center'>
-            <div className='card m-4' style={{ minWidth: "600px" }}>
+            <div className='card m-4' style={{ maxWidth: "600px" }}>
                 <div>
                     <h2 className='card-header text-center'>My Profile</h2>
                     <div className="m-3">

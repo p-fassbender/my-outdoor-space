@@ -46,7 +46,7 @@ const SignupForm = () => {
 
     return (
         <div className='d-flex justify-content-center'>
-            <div className='card m-4' style={{ minWidth: "600px" }}>
+            <div className='card m-4' style={{ maxWidth: "600px" }}>
                 <h2 className='card-header text-center'>Signup</h2>
                 <form onSubmit={handleFormSubmit} className="m-3">
                     <div className='form-group mb-2'>
