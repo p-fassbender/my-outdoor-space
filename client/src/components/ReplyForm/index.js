@@ -49,21 +49,25 @@ const ReplyForm = ({thread}) => {
                 Character Count: {characterCount}/200
                 {error && <span className="ml-2">Something went wrong...</span>}
             </p>
-            <form className="flex-row justify-center justify-space-between-md align-stretch"
+            <div>
+                
+            <form className="m-3 flex-column justify-content-center"
                 onSubmit={handleFormSubmit}
             >
+                <div>
                 <textarea
                     placeholder="Leave a reply to this thread..."
                     name='content'
                     value={formState.content}
-                    className="form-input col-12 col-md-9"
+                    className="form-input col-12"
                     onChange={handleChange}
-                ></textarea>
+                ></textarea></div>
 
-                <button className="btn col-12 col-md-3" type="submit">
+                <button className="btn btn-primary" type="submit">
                     Submit
                 </button>
             </form>
+            </div>
         </div>
 
     );
