@@ -59,3 +59,32 @@ export const QUERY_THREADS = gql`
         }
     }
 `
+
+export const QUERY_ME = gql`
+    query me {
+        me {
+            _id
+            username
+            password
+            accessLevel
+            threadCount
+            replyCount
+            threads {
+                _id
+                title
+                content
+                image
+                username
+                topic
+                replyCount
+            }
+            replies {
+                _id
+                title
+                content
+                username
+                thread
+            }
+        }
+    }
+`

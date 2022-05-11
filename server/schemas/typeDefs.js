@@ -67,7 +67,7 @@ const typeDefs = gql`
         updateUser(username: String!, password: String!): User
         addThread(title: String!, content: String!, topic: String!): Thread
         updateThread(title: String, content: String): Thread
-        deleteThread(_id: ID!): Thread
+        deleteThread(_id: ID!, topic: String!): Thread
         addReply(title: String!, content: String!, thread: String!): Reply
         updateReply(title: String, content: String): Reply
         deleteReply(_id: ID!): Reply

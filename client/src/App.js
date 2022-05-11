@@ -8,6 +8,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup'
 import SingleThread from './pages/SingleThread';
 import Topic from './pages/Topic';
+import MyProfile from './pages/MyProfile';
+// import UserProfile from './pages/UserProfile';
 
 import {
     ApolloClient,
@@ -18,19 +20,20 @@ import {
 
 import { setContext } from '@apollo/client/link/context';
 
+
 const httpLink = createHttpLink({
     uri: 'http://localhost:3001/graphql',
-  });
-  
+});
+
 const authLink = setContext((_, { headers }) => {
     const token = localStorage.getItem('id_token');
     return {
-      headers: {
-        ...headers,
-        authorization: token ? `Bearer ${token}` : '',
-      },
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : '',
+        },
     };
-  });
+});
 
 const client = new ApolloClient({
     link: authLink.concat(httpLink),
@@ -45,11 +48,12 @@ function App() {
                     <Header />
                     <Routes>
                         <Route exact path="/" element={<Home />} />
-                        {/* <Route path="/topic/:topicId" element={<TopicPage />} /> */}
-                        <Route exact path="/login" element={< Login/>} />
+                        <Route exact path="/login" element={< Login />} />
                         <Route exact path="/signup" element={<Signup />} />
-                        <Route name="thread" path="/:id" element={<SingleThread  />} />
+                        <Route name="thread" path="/:id" element={<SingleThread />} />
                         <Route exact path="/topic" element={<Topic />} />
+                        <Route exact path="/me" element={<MyProfile />} />
+                        {/* <Route path="/user/:id" element={<UserProfile />} /> */}
                     </Routes>
                     <Footer />
                 </div>

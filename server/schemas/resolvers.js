@@ -112,19 +112,9 @@ const resolvers = {
                 return await Thread.findByIdAndUpdate(context.thread._id, args, { new: true });
             }
         },
-        deleteThread: async (parent, { _id }, context) => {
-            if (context.topic && context.user) {
-                const updateTopic = await Topic.findOneAndUpdate(
-                    { _id: context.topic._id },
-                    { $pull: { threads: { _id: _id } } },
-                    { new: true }
-                );
-                const updateUser = await User.findByIdAndUpdate(
-                    { _id: context.user._id },
-                    { $pull: { threads: { _id: _id } } },
-                    { new: true }
-                );
-                return updateTopic, updateUser;
+        deleteThread: async (parent, args, context) => {
+            if (context.user) {
+                return Thread.findByIdAndDelete(args._id)
             }
             throw new AuthenticationError('Not logged in');
         },
@@ -150,19 +140,9 @@ const resolvers = {
                 return await Reply.findByIdAndUpdate(context.reply._id, args, { new: true });
             }
         },
-        deleteReply: async (parent, { _id }, context) => {
-            if (context.thread && context.user) {
-                const updateThread = await Thread.findByIdAndUpdate(
-                    { _id: context.thread._id },
-                    { $pull: { replies: { _id: _id } } },
-                    { new: true }
-                );
-                const updateUser = await User.findByIdAndUpdate(
-                    { _id: context.user._id },
-                    { $pull: { replies: { _id: _id } } },
-                    { new: true }
-                );
-                return updateThread, updateUser;
+        deleteReply: async (parent, args, context) => {
+            if (context.user) {
+                return Reply.findByIdAndDelete(args._id)
             }
             throw new AuthenticationError('Not logged in');
         },
