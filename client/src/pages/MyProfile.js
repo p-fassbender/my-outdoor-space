@@ -5,17 +5,39 @@ import { QUERY_ME } from '../utils/queries';
 const MyProfile = () => {
     const { data } = useQuery(QUERY_ME)
     const me = data?.me || [];
+
+
     return (
-        <div className='card m-3'>
-            <div className='card-header'>
-                <p className = 'm-0'>{me.username} </p>
-                <p className='small text-muted m-0'>{me.accessLevel}</p>
-            </div>
-            <div className='card-body d-flex '>
-                <p>Threads: {me.threadCount}</p>
-                <p>Replies: {me.replyCount}</p>
+        <div className='d-flex justify-content-center'>
+
+            <div className='card m-4' style={{minWidth: "600px"}}>
+                <div>
+                    <h2 className='card-header text-center'>My Profile</h2>
+                    <div className="m-3">
+                        <div className='mb-2'>
+                            <div className='m-3'>
+                                <label>Username</label>
+                                <p className='m-0 profile-text'>{me.username} </p>
+                            </div>
+                            <div className='m-3'>
+                                <label>User Permissions</label>
+                                <p className='m-0  profile-text'>{me.accessLevel}</p>
+                            </div>
+                            <div className='m-3'>
+                                <label>User Thread Count</label>
+                                <p className='m-0 profile-text'>{me.threadCount}</p>
+                            </div>
+                            <div className='m-3'>
+                                <label>User Replies</label>
+                                <p className='m-0 profile-text'>{me.replyCount}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        
     )
 }
 export default MyProfile;
