@@ -114,7 +114,13 @@ const resolvers = {
         },
         deleteThread: async (parent, args, context) => {
             if (context.user) {
-                return Thread.findByIdAndDelete(args._id)
+                await Topic.findOneAndUpdate(
+                    { title: args.topic },
+                    { $pull: { threads: {_id: args._id} } },
+                    { new: true }
+                )
+                await Thread.findByIdAndDelete(args._id)
+                return "thread deleted"
             }
             throw new AuthenticationError('Not logged in');
         },

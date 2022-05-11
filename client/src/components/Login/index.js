@@ -34,7 +34,7 @@ const LoginForm = () => {
 
     return (
         <div className='d-flex justify-content-center'>
-            <div className='card m-4' style={{minWidth: "600px"}}>
+            <div className='card m-4' style={{width: "600px"}}>
                 <div>
                     <h2 className='card-header text-center'>Login</h2>
                     <form onSubmit={handleFormSubmit} className="m-3">
