@@ -50,7 +50,7 @@ function App() {
                         <Route exact path="/" element={<Home />} />
                         <Route exact path="/login" element={< Login />} />
                         <Route exact path="/signup" element={<Signup />} />
-                        <Route name="thread" path="/:id" element={<SingleThread />} />
+                        <Route path="thread/:id" element={<SingleThread />} />
                         <Route exact path="/topic" element={<Topic />} />
                         <Route exact path="/me" element={<MyProfile />} />
                         <Route path="/user/:id" element={<UserProfile />} />

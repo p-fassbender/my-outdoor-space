@@ -5,10 +5,8 @@ import { useParams } from 'react-router-dom';
 
 const UserProfile = () => {
     const username = useParams()
-    console.log(username.id)
     const { data } = useQuery(QUERY_USER, { variables: { username: username.id } })
     const user = data?.user || [];
-    console.log(user)
     return (
         <div className='card m-3'>
             <div className='card-header'>

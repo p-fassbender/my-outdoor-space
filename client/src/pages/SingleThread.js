@@ -1,37 +1,44 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { QUERY_THREADS } from "../utils/queries";
+import { QUERY_THREAD } from "../utils/queries";
+import Auth from '../utils/auth';
+import ReplyForm from "../components/ReplyForm";
+import ReplyList from '../components/ReplyList'
 
 const SingleThread = props => {
+    const { id } = useParams();
+    const { loading, data } = useQuery(QUERY_THREAD, {
+        variables: { id: id }
+    });
+    const thread = data?.thread || {};
 
-  const {id: threadId } = useParams();
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
-  const { loading, data } = useQuery(QUERY_THREADS, {
-    variables: { id: threadId }
-  });
+    return (
+        <>
+            <div className="card m-4">
+                <h3 className='card-header'>
+                    {thread.title}
+                    <Link to={`/user/${thread.username}`}> - {thread.username}</Link>
+                </h3>
+                <p className='mx-3 mt-2'>
+                    {thread.content}
+                </p>
+            </div>
+            {Auth.loggedIn() && (
+                <div className='card m-4'>
+                    <ReplyForm id={id} thread={thread.title}/>
+                </div>
+            )}
 
-  const thread = data?.thread || {};
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <main>
-      <div className="card m-4">
-        <h5 className="card-header text-center">{thread.threadTitle}</h5>
-        <div className="d-flex topBorder">
-          <div className="col-2 cardColOne">
-            <p className="mx-2">User info</p>
-          </div>
-          <div className="col-10 cardColTw">
-            <p className="mx-2">{thread.threadContent}</p>
-          </div>
-        </div>
-      </div>
-    </main>
-  );
+            <div>
+                <ReplyList replies={thread.replies}/>
+            </div>
+        </>
+    );
 };
 
 export default SingleThread;
