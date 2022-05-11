@@ -9,7 +9,7 @@ import Signup from './pages/Signup'
 import SingleThread from './pages/SingleThread';
 import Topic from './pages/Topic';
 import MyProfile from './pages/MyProfile';
-// import UserProfile from './pages/UserProfile';
+import UserProfile from './pages/UserProfile';
 
 import {
     ApolloClient,
@@ -53,7 +53,7 @@ function App() {
                         <Route name="thread" path="/:id" element={<SingleThread />} />
                         <Route exact path="/topic" element={<Topic />} />
                         <Route exact path="/me" element={<MyProfile />} />
-                        {/* <Route path="/user/:id" element={<UserProfile />} /> */}
+                        <Route path="/user/:id" element={<UserProfile />} />
                     </Routes>
                     <Footer />
                 </div>

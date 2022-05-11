@@ -11,14 +11,18 @@ const ThreadList = ({threads}) => {
                 <div key={thread._id} className="card mb-3">
                     <h3 className='card-header'>
                         {thread.title}
+                        <Link to={`/user/${thread.username}`}> - {thread.username}</Link>
                     </h3>
                     <p className='mx-3 mt-2'>
                         {thread.content}
                     </p>
+                                        
                     <Link to={`/thread/${thread._id}`}> <button className="btn">
                         Join the discussion
                     </button>
                     </Link>
+                    
+
                 </div>
             ))}
             </div>
