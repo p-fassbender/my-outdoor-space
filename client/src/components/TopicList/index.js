@@ -13,8 +13,9 @@ const TopicList = ({ genre }) => {
         <>
             {topicsArray.map(topic => (
                 <li key={topic._id} className="d-flex topBorder">
-                    <div className="col-10 d-flex align-items-center cardColOne">
+                    <div className="col-10 d-flex flex-column align-items-left cardColOne">
                         <Link to='/topic' state={{ currentTopic: topic.title }} className="ps-3">{topic.title}</Link>
+                        <small className='fw-light ps-3'>{topic.description}</small>
                     </div>
                     <div className="col-2 ">
                         <p className="m-3">Threads: {topic.threadCount}</p>

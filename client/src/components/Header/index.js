@@ -21,7 +21,7 @@ const Header = () => {
                 <li className='nav-item'>
                   {Auth.loggedIn() ? (
                     <>
-                      <Link to="/profile" className='mx-2'>My Profile</Link>
+                      <Link to="/me" className='mx-2'>My Profile</Link>
                       <a href="/" onClick={logout}>
                         Logout
                       </a>
