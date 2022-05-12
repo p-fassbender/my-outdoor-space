@@ -11,11 +11,14 @@ const Topic = () => {
     const location = useLocation();
     const state = location.state;
 
+    console.log(state)
+
     const { data } = useQuery(QUERY_THREADS, {
         variables: { topic: state.currentTopic }
     })
     const threads = data?.threads || [];
 
+    console.log(threads)
     // query all threads for state.currentTopic
     return (
         <>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Header from './components/Header';
@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Signup from './pages/Signup'
 import SingleThread from './pages/SingleThread';
+import TopicPage from './pages/TopicPage';
 import Topic from './pages/Topic';
 import MyProfile from './pages/MyProfile';
 import UserProfile from './pages/UserProfile';

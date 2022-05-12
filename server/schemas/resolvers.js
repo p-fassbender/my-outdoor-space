@@ -124,20 +124,30 @@ const resolvers = {
             }
             throw new AuthenticationError('Not logged in');
         },
-        addReply: async (parent, args, context) => {
+        addReply: async (parent, { threadId, content }, context) => {
             if (context.user) {
-                const reply = await Reply.create({...args, username: context.user.username});
-                await User.findByIdAndUpdate(
-                    { _id: context.user._id },
-                    { $push: { replies: reply } },
-                    { new: true }
-                )
-                await Thread.findOneAndUpdate(
-                    { title: args.thread },
-                    { $push: { replies: reply } },
-                    { new: true }
-                )
-                return reply;
+
+                const updatedThread = await Thread.findOneAndUpdate(
+                    { _id: threadId },
+                    { $push: { replies: { content, username: context.user.username } } },
+                );
+
+                return updatedThread;
+
+
+
+                // const reply = await Reply.create({...args, username: context.user.username});
+                // await User.findByIdAndUpdate(
+                //     { _id: context.user._id },
+                //     { $push: { replies: reply } },
+                //     { new: true }
+                // )
+                // await Thread.findOneAndUpdate(
+                //     { title: args.thread },
+                //     { $push: { replies: reply } },
+                //     { new: true }
+                // )
+                // return reply;
             }
             throw new AuthenticationError('Not logged in');
         },

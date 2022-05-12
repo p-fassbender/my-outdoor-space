@@ -7,6 +7,8 @@ const Home = () => {
     const {data} = useQuery(QUERY_GENRES)
     const genres = data?.genres || [];
 
+ //   console.log(genres);
+
     return (
         <>
             <GenreList genres={genres}/>

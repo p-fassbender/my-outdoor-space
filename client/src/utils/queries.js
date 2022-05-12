@@ -47,7 +47,7 @@ export const QUERY_THREADS = gql`
             image
             username
             topic
-            replyCount
+            replyCount 
             replies {
                 _id
                 content
@@ -114,6 +114,20 @@ export const QUERY_THREAD = gql`
                 username
                 thread
             }
+        }
+    }
+`
+
+export const QUERY_THREAD = gql`
+    query Thread($id: ID!) {
+        thread(_id: $id) {
+            _id
+            title
+            content
+            image
+            username
+            topic
+   
         }
     }
 `
