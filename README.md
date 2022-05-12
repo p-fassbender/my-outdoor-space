@@ -51,13 +51,17 @@ This program can be run through a browser using the provided link to the the dep
 There are no formal tests for this project
 
 ## Media
--- screenshots go here --
+![my-outdoor-space-home](https://user-images.githubusercontent.com/36012762/167975766-36d757cc-97d7-4d03-93a1-e06881d3ac2f.png)
+![my-outdoor-space-login](https://user-images.githubusercontent.com/36012762/167975793-99ae6f01-e270-48ab-a424-774921ab26d5.png)
+![my-outdoor-space-signup](https://user-images.githubusercontent.com/36012762/167975806-9fe7a875-a6e8-48f7-937a-ea940042257b.png)
+![my-outdoor-space-threads](https://user-images.githubusercontent.com/36012762/167975826-9d6d06bb-baaa-4563-9771-42604f7ee2a0.png)
+![my-outdoor-space-my-profile](https://user-images.githubusercontent.com/36012762/167975830-92e506a9-a0e6-4bb9-b511-1eda84bb046d.png)
 
 The following link is to this project's github repository
 https://github.com/p-fassbender/my-outdoor-space
 
 The following link is to this project's live website
---heroku site goes here -- 
+https://my-outdoor-space.herokuapp.com/ 
 
 ## Questions
 Any questions feel free to contact us via our githubs or by sending any of us an email. <br/>
